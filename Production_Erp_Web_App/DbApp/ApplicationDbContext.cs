@@ -16,6 +16,7 @@ namespace Production_Erp_Web_App.DbApp
         public DbSet<SalesInvoice> SalesInvoices => Set<SalesInvoice>();
         public DbSet<PurchaseInvoice> PurchaseInvoices => Set<PurchaseInvoice>();
         public DbSet<Employee> Employees => Set<Employee>();
+        public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // NOTE: as the Master Data module grows (per the design documents),
@@ -74,7 +75,20 @@ namespace Production_Erp_Web_App.DbApp
                 e.Property(x => x.FullName).HasMaxLength(200).IsRequired();
                 e.Property(x => x.Designation).HasMaxLength(100);
             });
+            modelBuilder.Entity<RefreshToken>(e =>
+            {
+                e.HasKey(x => x.Id);
+                e.Property(x => x.TokenHash).HasMaxLength(256).IsRequired();
+                e.Property(x => x.UserId).IsRequired();
+                e.HasIndex(x => x.TokenHash).IsUnique();
 
+                // No navigation property on ApplicationUser — keeps
+                // ApplicationUser small. Just a plain FK relationship.
+                e.HasOne<ApplicationUser>()
+                    .WithMany()
+                    .HasForeignKey(x => x.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
             base.OnModelCreating(modelBuilder);
         }
     }
