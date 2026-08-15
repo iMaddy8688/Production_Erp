@@ -1,4 +1,4 @@
-﻿
+﻿@model Production_Erp_Web_App.Models.DashboardViewModel
 @{
     ViewData["Title"] = "Dashboard";
 }
@@ -10,8 +10,8 @@
         <div class="card text-white bg-primary h-100">
             <div class="card-body">
                 <div class="text-uppercase small">Items</div>
-                @*<div class="fs-2 fw-bold">@Model.TotalItems</div>
-                <div class="small">@Model.LowStockItems low stock</div>*@
+                <div class="fs-2 fw-bold">@Model.TotalItems</div>
+                <div class="small">@Model.LowStockItems low stock</div>
             </div>
         </div>
     </div>
@@ -19,7 +19,7 @@
         <div class="card text-white bg-success h-100">
             <div class="card-body">
                 <div class="text-uppercase small">Customers</div>
-               @* <div class="fs-2 fw-bold">@Model.TotalCustomers</div>*@
+                <div class="fs-2 fw-bold">@Model.TotalCustomers</div>
             </div>
         </div>
     </div>
@@ -27,7 +27,7 @@
         <div class="card text-white bg-info h-100">
             <div class="card-body">
                 <div class="text-uppercase small">Suppliers</div>
-              @*  <div class="fs-2 fw-bold">@Model.TotalSuppliers</div>*@
+                <div class="fs-2 fw-bold">@Model.TotalSuppliers</div>
             </div>
         </div>
     </div>
@@ -35,7 +35,7 @@
         <div class="card text-white bg-secondary h-100">
             <div class="card-body">
                 <div class="text-uppercase small">Employees</div>
-              @*  <div class="fs-2 fw-bold">@Model.TotalEmployees</div>*@
+                <div class="fs-2 fw-bold">@Model.TotalEmployees</div>
             </div>
         </div>
     </div>
@@ -44,8 +44,8 @@
         <div class="card h-100">
             <div class="card-body">
                 <div class="text-uppercase small text-muted">Sales</div>
-               @* <div class="fs-3 fw-bold">@Model.TotalSalesInvoices invoices</div>*@
-            @*    <div class="text-muted">Total: &#8377;@Model.TotalSalesAmount.ToString("N2")</div>*@
+                <div class="fs-3 fw-bold">@Model.TotalSalesInvoices invoices</div>
+                <div class="text-muted">Total: &#8377;@Model.TotalSalesAmount.ToString("N2")</div>
             </div>
         </div>
     </div>
@@ -53,14 +53,14 @@
         <div class="card h-100">
             <div class="card-body">
                 <div class="text-uppercase small text-muted">Purchases</div>
-               @* <div class="fs-3 fw-bold">@Model.TotalPurchaseInvoices invoices</div>*@
-            @*    <div class="text-muted">Total: &#8377;@Model.TotalPurchaseAmount.ToString("N2")</div>*@
+                <div class="fs-3 fw-bold">@Model.TotalPurchaseInvoices invoices</div>
+                <div class="text-muted">Total: &#8377;@Model.TotalPurchaseAmount.ToString("N2")</div>
             </div>
         </div>
     </div>
 </div>
 
-@*@if (Model.TotalItems == 0 && Model.TotalCustomers == 0 && Model.TotalSuppliers == 0)
+@if (Model.TotalItems == 0 && Model.TotalCustomers == 0 && Model.TotalSuppliers == 0)
 {
     <div class="alert alert-info mt-4" role="alert">
         This dashboard reads live from SQL Server via Entity Framework Core — every number above is a real
@@ -68,4 +68,4 @@
         Employees) hasn't been entered yet and no Sales/Purchase invoices exist. Once the Master Data and
         Purchase/Sales modules are built, this page updates automatically with no further changes needed here.
     </div>
-}*@
+}
